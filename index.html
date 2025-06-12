@@ -1,25 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>titulo principal</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compu Oferta - Venta de Computadoras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        button {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .hidden {
+            display: none;
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+        section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>pagina principal </h1>
-    <p>Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. 
-        Officia saepe rerum natus molestias
-        quibusdam eligendi unde in 
-        doloremque enim similique necessitatibus
-        nesciunt, praesentium consectetur blanditiis,
-        voluptates vero. In, perspiciatis velit?</p>
-    <h2> Productos</h2>
-    <P>Lorem ipsum dolor
-    sit amet consectetur adipisicing
-    elit. Enim, distinctio maxime?
-    Corrupti excepturi a non corporis exercitationem vel sunt,
-    quos distinctio eius omnis, iusto, 
-    iure repudiandae quod culpa voluptatum nulla!</P>    
+    <h1>Compu Oferta</h1>
+
+    <section id="acerca de nosotros">
+        <h2>Conócenos</h2>
+        <button id="btn-more-info">Conoce más de nosotros</button>
+        <p id="more-info" class="hidden">
+            Trabajando para usted lo mismo que Novicompu pero más barato.
+        </p>
+    </section>
+
+    <section id="productos">
+        <h2>Productos</h2>
+        <!-- Aquí agregarás los productos más adelante -->
+    </section>
+
+    <section id="ofertas">
+        <h2>Ofertas</h2>
+        <!-- Aquí agregarás las ofertas más adelante -->
+    </section>
+
+    <script>
+        const btnMoreInfo = document.getElementById('btn-more-info');
+        const moreInfo = document.getElementById('more-info');
+
+        btnMoreInfo.addEventListener('click', () => {
+            if (moreInfo.classList.contains('hidden')) {
+                moreInfo.classList.remove('hidden');
+                btnMoreInfo.textContent = "Ocultar información";
+            } else {
+                moreInfo.classList.add('hidden');
+                btnMoreInfo.textContent = "Conoce más de nosotros";
+            }
+        });
+    </script>
 </body>
 </html>
