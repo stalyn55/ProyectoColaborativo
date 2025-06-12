@@ -2,202 +2,241 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Compu Oferta - Facturación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compu Oferta</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ece9e6, #ffffff);
       margin: 0;
       padding: 0;
-      color: #333;
+      background-color: #f1f2f6;
+      color: #2f3542;
     }
 
     header {
-      background-color: #2c3e50;
+      background-color: #3742fa;
       color: white;
       padding: 20px;
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-    }
-
-    nav {
-      margin-top: 10px;
-    }
-
-    nav a {
-      color: #ecf0f1;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 30px auto;
+    section {
       padding: 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .productos-container {
+    h2 {
+      color: #3742fa;
+      border-bottom: 2px solid #ced6e0;
+      padding-bottom: 5px;
+    }
+
+    .productos {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
 
-    .producto-card {
-      background-color: #ffffff;
+    .card {
+      background: #ffffff;
       border-radius: 10px;
-      padding: 20px;
-      width: 280px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      padding: 15px;
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
     }
 
-    .producto-card:hover {
+    .card:hover {
       transform: scale(1.03);
     }
 
-    .producto-card h3 {
-      margin-top: 0;
-      color: #2c3e50;
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
 
-    .producto-card .precio {
-      color: #27ae60;
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-
-    .producto-card button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #3498db;
+    button {
+      background-color: #3742fa;
       border: none;
       color: white;
-      border-radius: 5px;
+      padding: 10px 15px;
       cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-top: 10px;
     }
 
-    .producto-card button:hover {
-      background-color: #2980b9;
+    button:hover {
+      background-color: #2f3542;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0 0;
+      text-align: left;
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    li {
+      margin: 6px 0;
     }
 
     .factura {
-      background-color: #fefefe;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 40px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .factura h2 {
-      margin-top: 0;
-    }
-
-    .factura ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .factura li {
-      margin-bottom: 10px;
-      border-bottom: 1px dashed #ccc;
-      padding-bottom: 5px;
-    }
-
-    .total {
-      font-weight: bold;
-      font-size: 1.2em;
-      margin-top: 10px;
-      color: #e67e22;
-    }
-
-    footer {
-      background-color: #2c3e50;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      max-width: 1200px;
+      margin: 20px auto;
     }
 
     @media (max-width: 600px) {
-      .producto-card {
-        width: 100%;
+      .productos {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Compu Oferta</h1>
-    <nav>
-      <a href="#productos">Productos</a>
-      <a href="#factura">Factura</a>
-    </nav>
-  </header>
 
-  <div class="container">
-    <section id="productos">
-      <h2>Productos Disponibles</h2>
-      <div class="productos-container">
-        <div class="producto-card">
-          <h3>Lenovo IdeaPad 3</h3>
-          <p>Intel i5, 8GB RAM, 256GB SSD</p>
-          <p class="precio">$599</p>
-          <button onclick="agregarProducto('Lenovo IdeaPad 3', 599)">Agregar a factura</button>
-        </div>
-        <div class="producto-card">
-          <h3>HP Pavilion 15</h3>
-          <p>Ryzen 7, 16GB RAM, 512GB SSD</p>
-          <p class="precio">$749</p>
-          <button onclick="agregarProducto('HP Pavilion 15', 749)">Agregar a factura</button>
-        </div>
-        <div class="producto-card">
-          <h3>Asus TUF Gaming</h3>
-          <p>i7, 16GB RAM, RTX 3050</p>
-          <p class="precio">$999</p>
-          <button onclick="agregarProducto('Asus TUF Gaming', 999)">Agregar a factura</button>
-        </div>
-      </div>
-    </section>
+<header>
+  <h1>Compu Oferta</h1>
+  <p>¡Compra tu computadora al mejor precio!</p>
+</header>
 
-    <section id="factura" class="factura">
-      <h2>Factura del Cliente</h2>
-      <ul id="listaFactura">
-        <li>No hay productos aún.</li>
+<section>
+  <h2>Conócenos</h2>
+  <p>Trabajamos para ofrecerte la mejor tecnología a precios más bajos que la competencia.</p>
+</section>
+
+<section>
+  <h2>Productos</h2>
+  <div class="productos" id="lista-productos">
+    <div class="card">
+      <img src="Lenovo IdeaPad.png" alt="Lenovo IdeaPad 3" />
+      <h3>Lenovo IdeaPad 3</h3>
+      <p>$599</p>
+      <ul>
+        <li>Procesador: Intel Core i5</li>
+        <li>RAM: 8GB</li>
+        <li>Almacenamiento: 256GB SSD</li>
+        <li>Pantalla: 15.6" Full HD</li>
       </ul>
-      <p class="total" id="totalFactura">Total: $0</p>
-    </section>
+      <button onclick="seleccionar('Lenovo IdeaPad 3', 599)">Seleccionar</button>
+    </div>
+    <div class="card">
+      <img src="HP Pavilion 15.jpg" alt="HP Pavilion 15" />
+      <h3>HP Pavilion 15</h3>
+      <p>$749</p>
+      <ul>
+        <li>Procesador: Intel Core i7</li>
+        <li>RAM: 12GB</li>
+        <li>Almacenamiento: 512GB SSD</li>
+        <li>Pantalla: 15.6" Full HD</li>
+      </ul>
+      <button onclick="seleccionar('HP Pavilion 15', 749)">Seleccionar</button>
+    </div>
+    <div class="card">
+      <img src="Asus TUF Gaming.png" alt="Asus TUF Gaming" />
+      <h3>Asus TUF Gaming</h3>
+      <p>$999</p>
+      <ul>
+        <li>Procesador: AMD Ryzen 7</li>
+        <li>RAM: 16GB</li>
+        <li>Almacenamiento: 1TB SSD</li>
+        <li>Pantalla: 15.6" Full HD 144Hz</li>
+      </ul>
+      <button onclick="seleccionar('Asus TUF Gaming', 999)">Seleccionar</button>
+    </div>
   </div>
+</section>
 
-  <footer>
-    &copy; 2025 Compu Oferta - Quito, Ecuador
-  </footer>
+<section class="factura">
+  <h2>Factura</h2>
+  <ul id="lista-factura">
+    <li>No hay productos aún.</li>
+  </ul>
+  <p id="total">Total: $0</p>
+  <button onclick="generarFactura()">Comprar y generar factura</button>
+</section>
 
-  <script>
-    const listaFactura = document.getElementById('listaFactura');
-    const totalFactura = document.getElementById('totalFactura');
+<script>
+  const productos = [];
+  const listaFactura = document.getElementById('lista-factura');
+  const totalDisplay = document.getElementById('total');
+
+  function seleccionar(nombre, precio) {
+    productos.push({ nombre, precio });
+    actualizarFactura();
+  }
+
+  function actualizarFactura() {
+    listaFactura.innerHTML = "";
     let total = 0;
 
-    function agregarProducto(nombre, precio) {
-      const nuevoItem = document.createElement('li');
-      nuevoItem.textContent = `${nombre} - $${precio}`;
-      if (listaFactura.children[0].textContent === "No hay productos aún.") {
-        listaFactura.innerHTML = '';
-      }
-      listaFactura.appendChild(nuevoItem);
-      total += precio;
-      totalFactura.textContent = `Total: $${total}`;
+    productos.forEach((p, index) => {
+      const li = document.createElement('li');
+      li.textContent = `${p.nombre} - $${p.precio}`;
+      const btnEliminar = document.createElement('button');
+      btnEliminar.textContent = "Eliminar";
+      btnEliminar.style.marginLeft = "10px";
+      btnEliminar.onclick = () => {
+        productos.splice(index, 1);
+        actualizarFactura();
+      };
+      li.appendChild(btnEliminar);
+      listaFactura.appendChild(li);
+      total += p.precio;
+    });
+
+    if (productos.length === 0) {
+      listaFactura.innerHTML = "<li>No hay productos aún.</li>";
     }
-  </script>
+
+    totalDisplay.textContent = `Total: $${total}`;
+  }
+
+  async function generarFactura() {
+    if (productos.length === 0) {
+      alert("No hay productos seleccionados.");
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(18);
+    doc.text("Factura - Compu Oferta", 20, 20);
+    doc.setFontSize(12);
+    doc.text(`Fecha: ${new Date().toLocaleDateString()}`, 20, 30);
+
+    let y = 45;
+    let total = 0;
+
+    productos.forEach((p, i) => {
+      doc.text(`${i + 1}. ${p.nombre} - $${p.precio}`, 20, y);
+      y += 10;
+      total += p.precio;
+    });
+
+    doc.setFontSize(14);
+    doc.text(`Total a pagar: $${total}`, 20, y + 10);
+
+    doc.save("factura_compu_oferta.pdf");
+
+    alert("Factura generada correctamente.");
+    productos.length = 0;
+    actualizarFactura();
+  }
+</script>
+
 </body>
 </html>
