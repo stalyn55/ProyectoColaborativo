@@ -98,13 +98,40 @@
     }
 
     @media (max-width: 600px) {
-      .productos {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  
-  
+  .productos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 260px;
+    padding: 10px;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+  }
+
+  .card ul li {
+    font-size: 0.9rem;
+  }
+
+  .card button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+ 
  /* ==== ESTILOS PARA LA SECCIÓN DE RESERVA ==== */
 .reserva {
   background: white;
@@ -208,6 +235,7 @@
       </ul>
       <button onclick="seleccionar('Lenovo IdeaPad 3', 599)">Seleccionar</button>
     </div>
+
     <div class="card">
       <img src="HP Pavilion 15.jpg" alt="HP Pavilion 15" />
       <h3>HP Pavilion 15</h3>
@@ -220,6 +248,7 @@
       </ul>
       <button onclick="seleccionar('HP Pavilion 15', 749)">Seleccionar</button>
     </div>
+
     <div class="card">
       <img src="Asus TUF Gaming.png" alt="Asus TUF Gaming" />
       <h3>Asus TUF Gaming</h3>
@@ -232,7 +261,103 @@
       </ul>
       <button onclick="seleccionar('Asus TUF Gaming', 999)">Seleccionar</button>
     </div>
+
+    <!-- Producto 4 -->
+    <div class="card">
+      <img src="Asus zenbook.png" alt="Asus Zenbook" />
+      <h3>Asus Zenbook</h3>
+      <p>$899</p>
+      <ul>
+        <li>Procesador: Intel Core i7</li>
+        <li>RAM: 16GB</li>
+        <li>Almacenamiento: 512GB SSD</li>
+        <li>Pantalla: 14" Full HD OLED</li>
+      </ul>
+      <button onclick="seleccionar('Asus Zenbook', 899)">Seleccionar</button>
+    </div>
+
+    <!-- Producto 5 -->
+    <div class="card">
+      <img src="case altek.png" alt="Case Altek" />
+      <h3>Case Altek</h3>
+      <p>$89</p>
+      <ul>
+        <li>Tipo: Torre ATX</li>
+        <li>Material: Acero y vidrio templado</li>
+        <li>Luces RGB: Sí</li>
+        <li>Ventiladores incluidos: 3</li>
+      </ul>
+      <button onclick="seleccionar('Case Altek', 89)">Seleccionar</button>
+    </div>
+
+    <!-- Producto 6 -->
+    <div class="card">
+      <img src="case antryx.png" alt="Case Antryx" />
+      <h3>Case Antryx</h3>
+      <p>$79</p>
+      <ul>
+        <li>Tipo: Mid Tower</li>
+        <li>Material: Acero y acrílico</li>
+        <li>Luces RGB: Sí</li>
+        <li>Ventiladores incluidos: 2</li>
+      </ul>
+      <button onclick="seleccionar('Case Antryx', 79)">Seleccionar</button>
+    </div>
+
+    <!-- Producto 7 -->
+    <div class="card">
+      <img src="case nvidia.png" alt="Case Nvidia" />
+      <h3>Case Nvidia Edition</h3>
+      <p>$109</p>
+      <ul>
+        <li>Diseño: Temático Nvidia</li>
+        <li>Material: Aluminio</li>
+        <li>Luces RGB: Verde Nvidia</li>
+        <li>Ventiladores incluidos: 4</li>
+      </ul>
+      <button onclick="seleccionar('Case Nvidia Edition', 109)">Seleccionar</button>
+    </div>
+
+    <!-- Producto 8 -->
+    <div class="card">
+      <img src="gigabite radeon VII.png" alt="Gigabyte Radeon VII" />
+      <h3>Gigabyte Radeon VII</h3>
+      <p>$699</p>
+      <ul>
+        <li>GPU: Radeon VII</li>
+        <li>Memoria: 16GB HBM2</li>
+        <li>Conectores: HDMI, DisplayPort</li>
+        <li>Refrigeración: Triple ventilador</li>
+      </ul>
+      <button onclick="seleccionar('Gigabyte Radeon VII', 699)">Seleccionar</button>
+    </div>
   </div>
+  <!-- Producto 9 -->
+<div class="card">
+  <img src="rtx3060.png" alt="RTX 3060" />
+  <h3>RTX 3060</h3>
+  <p>$399</p>
+  <ul>
+    <li>GPU: NVIDIA GeForce RTX 3060</li>
+    <li>Memoria: 12GB GDDR6</li>
+    <li>Conectores: HDMI, DisplayPort</li>
+    <li>Refrigeración: Doble ventilador</li>
+  </ul>
+  <button onclick="seleccionar('RTX 3060', 399)">Seleccionar</button>
+</div>
+<!-- Producto 10 -->
+<div class="card">
+  <img src="rtx4060.png" alt="RTX 4060" />
+  <h3>RTX 4060</h3>
+  <p>$499</p>
+  <ul>
+    <li>GPU: NVIDIA GeForce RTX 4060</li>
+    <li>Memoria: 8GB GDDR6</li>
+    <li>Conectores: HDMI, DisplayPort</li>
+    <li>Refrigeración: Triple ventilador</li>
+  </ul>
+  <button onclick="seleccionar('RTX 4060', 499)">Seleccionar</button>
+</div>
 </section>
 
 <section class="factura">
@@ -269,10 +394,23 @@
 
     <button type="submit">Enviar Reserva</button>
   </form>
-  <div class="botones-contacto">
-    <button style="background-color: #25d366;">WhatsApp</button>
-    <button style="background-color: #0072c6;">Correo</button>
-  </div>
+<div class="botones-contacto">
+  <!-- Botón de WhatsApp -->
+  <button onclick="mostrarWhatsApp()" style="background-color: #25d366; display: flex; align-items: center; gap: 8px; color: white; border: none; padding: 8px 12px; border-radius: 5px;">
+    <img src="wass.png" alt="WhatsApp" width="24" height="24">
+    WhatsApp
+  </button>
+  <div id="info-whatsapp" style="display: none; background-color: #25d366; color: white; padding: 8px; margin-top: 5px; border-radius: 5px;"></div>
+
+  <!-- Botón de Correo -->
+  <button onclick="mostrarCorreo()" style="background-color: #0072c6; display: flex; align-items: center; gap: 8px; color: white; border: none; padding: 8px 12px; border-radius: 5px; margin-top: 10px;">
+    <img src="correo.png" alt="Correo" width="24" height="24">
+    Correo
+  </button>
+  <div id="info-correo" style="display: none; background-color: #0072c6; color: white; padding: 8px; margin-top: 5px; border-radius: 5px;"></div>
+</div>
+
+
 </section>
 
 <script>
@@ -349,4 +487,23 @@
     e.preventDefault(); // evita recargar la página
     generarFactura();
   });
+ function mostrarWhatsApp() {
+    const div = document.getElementById('info-whatsapp');
+    if (div.style.display === 'block') {
+      div.style.display = 'none';
+    } else {
+      div.style.display = 'block';
+      div.textContent = 'Contáctanos a los números: 0983274268 o 0962630806';
+    }
+  }
+
+  function mostrarCorreo() {
+    const div = document.getElementById('info-correo');
+    if (div.style.display === 'block') {
+      div.style.display = 'none';
+    } else {
+      div.style.display = 'block';
+      div.textContent = 'stalyntoala00@gmail.com y luisrojad84@gmail.com';
+    }
+  }
 </script>
