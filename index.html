@@ -103,6 +103,82 @@
         align-items: center;
       }
     }
+  
+  
+ /* ==== ESTILOS PARA LA SECCIÓN DE RESERVA ==== */
+.reserva {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 1200px;  /* ¡más ancho! */
+  width: 90%;         /* responsivo para pantallas pequeñas */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.reserva h2 {
+  color: #3742fa;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.reserva form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reserva label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.reserva input,
+.reserva select,
+.reserva textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.reserva textarea {
+  resize: vertical;
+}
+
+.reserva button[type="submit"] {
+  background-color: #3742fa;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.reserva button[type="submit"]:hover {
+  background-color: #2f3542;
+}
+
+.botones-contacto {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.botones-contacto button {
+  flex: 1;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
   </style>
 </head>
 <body>
@@ -166,6 +242,37 @@
   </ul>
   <p id="total">Total: $0</p>
   <button onclick="generarFactura()">Comprar y generar factura</button>
+</section>
+
+<section class="reserva">
+  <h2>Reserva tu Pedido</h2>
+  <form id="form-reserva">
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="fecha">Fecha del pedido:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+    <label for="lugar">Lugar elegido:</label>
+    <select id="lugar" name="lugar">
+      <option value="Latacunga">Latacunga</option>
+      <option value="Salcedo">Salcedo</option>
+      <option value="Pujili">Pujili</option>
+      <option value="Quito">Quito</option>
+    </select>
+
+    <label for="comentarios">Comentarios adicionales:</label>
+    <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+
+    <button type="submit">Enviar Reserva</button>
+  </form>
+  <div class="botones-contacto">
+    <button style="background-color: #25d366;">WhatsApp</button>
+    <button style="background-color: #0072c6;">Correo</button>
+  </div>
 </section>
 
 <script>
@@ -236,7 +343,10 @@
     productos.length = 0;
     actualizarFactura();
   }
-</script>
 
-</body>
-</html>
+  // ✅ Aquí hacemos que enviar el formulario llame a generarFactura
+  document.getElementById('form-reserva').addEventListener('submit', function (e) {
+    e.preventDefault(); // evita recargar la página
+    generarFactura();
+  });
+</script>
