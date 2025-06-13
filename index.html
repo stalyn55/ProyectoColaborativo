@@ -7,13 +7,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f1f2f6;
-      color: #2f3542;
-    }
-
+  background-image: url('digi.png');
+  background-size: cover;        /* Hace que cubra toda la pantalla */
+  background-repeat: no-repeat;  /* Evita que se repita */
+  background-position: center;   /* Centra la imagen */
+  background-attachment: fixed;  /* Mantiene el fondo fijo al hacer scroll */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.card {
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+  backdrop-filter: blur(4px);                 /* Desenfoca lo de atrás (opcional) */
+}
     header {
       background-color: #3742fa;
       color: white;
